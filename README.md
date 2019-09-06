@@ -1,0 +1,2 @@
+# BaseRecyclerViewAdapterHelperDemo
+recyclerView BaseRecyclerViewAdapterHelper
