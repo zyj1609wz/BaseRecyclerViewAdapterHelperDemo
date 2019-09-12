@@ -36,7 +36,7 @@
         android:layout_marginTop="20dp"
         android:background="#dddddd"
         android:gravity="center"
-        android:text="上拉加载更多"
+        android:text="添加头部 和  尾部"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/bt2" />

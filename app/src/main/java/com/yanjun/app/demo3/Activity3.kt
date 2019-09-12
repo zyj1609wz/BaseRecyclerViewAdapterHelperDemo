@@ -4,110 +4,66 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
-import com.yanjun.app.demo3.adapter.Adater3Header
-import com.yanjun.app.demo3.adapter.Adater3Main
+import android.widget.Toast
+import com.chad.library.adapter.base.BaseQuickAdapter
+import com.chad.library.adapter.base.listener.OnItemChildClickListener
+import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.yanjun.app.demo3.Adapter3
 
 class Activity3 : AppCompatActivity() {
 
-    var headerAdapter: Adater3Header? = null
-    var headRecyclerView: RecyclerView? = null
-    var page = 0
+    lateinit var mAdapter: Adapter3
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity3)
-
         val recycler: RecyclerView = findViewById(R.id.recyclerview)
         recycler.layoutManager = LinearLayoutManager(this)
-        var adater3 = Adater3Main(null)
-        adater3.addHeaderView(getHeaderView())
-        recycler.adapter = adater3
-        adater3.setOnLoadMoreListener({
+        mAdapter = Adapter3(getList())
+        recycler.adapter = mAdapter
 
-            recycler.postDelayed({
-                Log.e("zhaoyanjun:", "more---")
+        recycler.addOnItemTouchListener(object : OnItemClickListener() {
+            override fun onSimpleItemClick(
+                adapter: BaseQuickAdapter<*, *>?,
+                view: View?,
+                position: Int
+            ) {
+                Toast.makeText(this@Activity3, "item $position ", Toast.LENGTH_SHORT).show()
+            }
 
-                //更新数据
-                adater3.addData(getMainRefresh())
+        })
 
-                //刷新界面 加载更多完成
-                adater3.loadMoreEnd()
+        recycler.addOnItemTouchListener(object : OnItemChildClickListener() {
+            override fun onSimpleItemChildClick(
+                adapter: BaseQuickAdapter<*, *>?,
+                view: View,
+                position: Int
+            ) {
+                when (view.id) {
+                    R.id.button -> {
+                        Toast.makeText(this@Activity3, "button $position ", Toast.LENGTH_SHORT)
+                            .show()
+                    }
+                }
+            }
 
-            }, 3000)
 
-        }, recycler)
+        })
 
-        headerAdapter?.setOnLoadMoreListener({
-
-            Log.e("zhaoyanjun:", "load more");
-
-
-//            headRecyclerView?.postDelayed({
-//                Log.e("zhaoyanjun:", "header more---")
-//                page++
-//
-//                //更新数据
-//                headerAdapter?.addData(getRereshData())
-//
-//                //刷新界面  加载更多完成
-//                headerAdapter?.loadMoreComplete()
-//
-//                if (page == 3) {
-//                    headerAdapter?.setEnableLoadMore(false)
-//                    adater3?.setNewData(getMain())
-//                }
-//            }, 3000)
-
-        }, headRecyclerView)
+        var head = LayoutInflater.from(this).inflate(R.layout.activity3_header,null,false)
+        var foot = LayoutInflater.from(this).inflate(R.layout.activity3_footer,null,false)
+        mAdapter.addHeaderView(head)
+        mAdapter.addFooterView(foot)
     }
 
-    fun getHeaderView(): View {
-        val header = LayoutInflater.from(this).inflate(R.layout.activity3_header, null)
-        headRecyclerView = header.findViewById<RecyclerView>(R.id.recyclerview)
-        val linearLayoutManager = LinearLayoutManager(this)
-        linearLayoutManager.orientation = LinearLayoutManager.VERTICAL
-        headRecyclerView?.setHasFixedSize(false)
-        headRecyclerView?.layoutManager = linearLayoutManager
-        headerAdapter = Adater3Header(getData())
-        headRecyclerView?.adapter = headerAdapter
-
-        return header
-    }
-
-    private fun getMain(): MutableList<String> {
-        val list = mutableListOf<String>()
+    fun getList(): MutableList<User> {
+        var list = mutableListOf<User>()
         for (i in 0..15) {
-            list.add("main $i")
+            var user = User("第 $i 数据", i, Constant.image)
+            list.add(user)
         }
         return list
     }
-
-    private fun getMainRefresh(): MutableList<String> {
-        val list = mutableListOf<String>()
-        for (i in 0..15) {
-            list.add("main refresh $i")
-        }
-        return list
-    }
-
-    private fun getData(): MutableList<String> {
-        val list = mutableListOf<String>()
-        for (i in 0..15) {
-            list.add("header $i")
-        }
-        return list
-    }
-
-    private fun getRereshData(): MutableList<String> {
-        val list = mutableListOf<String>()
-        for (i in 0..15) {
-            list.add("update $i")
-        }
-        return list
-    }
-
-
 }

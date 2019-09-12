@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="80dp"
-    tools:context=".Activity3">
+    tools:context=".Activity4">
 
     <TextView
         android:id="@+id/tv"
