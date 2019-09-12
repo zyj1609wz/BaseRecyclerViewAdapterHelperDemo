@@ -23,5 +23,9 @@ class MainActivity : AppCompatActivity() {
         findViewById<TextView>(R.id.bt3).setOnClickListener {
             startActivity(Intent(this, Activity3::class.java))
         }
+
+        findViewById<TextView>(R.id.bt4).setOnClickListener {
+            startActivity(Intent(this, Activity4::class.java))
+        }
     }
 }
