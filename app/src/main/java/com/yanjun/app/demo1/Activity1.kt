@@ -4,14 +4,17 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.listener.OnItemClickListener
 import com.yanjun.app.demo1.Adapter1
-
+/*
+ * @Created by zhaoyanjun
+ * @time 2019-09-12 18:02
+ * 单类型 item
+ */
 class Activity1 : AppCompatActivity() {
 
     lateinit var mAdapter: Adapter1
