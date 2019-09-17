@@ -24,15 +24,25 @@
 
  <style>
  
- 
+ body{
+       background: #dedede;
+       padding: 5% 5%;
+       margin: 0;
+ }
  
  </style>
  
  <body>
  
- <img width="300" height="450" src="/image/2.png"/>   <img width="300" height="450" src="/image/3.png"/>
- <img width="300" height="450" src="/image/4.png"/>
- <img width="300" height="450" src="/image/5.png"/>
+ <div class="f0">
+ 
+  <img width="300" height="450" src="/image/2.png"/>   <img width="300" height="450" src="/image/3.png"/>
+  <img width="300" height="450" src="/image/4.png"/>
+  <img width="300" height="450" src="/image/5.png"/>
+ 
+ </div>
+ 
+ 
  
  </body>
 
