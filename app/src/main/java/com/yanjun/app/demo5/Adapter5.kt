@@ -12,6 +12,8 @@ class Adapter5(list: MutableList<User>) :
     override fun convert(helper: BaseViewHolder, item: User) {
         helper.setText(R.id.tv, item.name)
         helper.addOnClickListener(R.id.button)
+        helper.addOnLongClickListener(R.id.button)
+
         Glide.with(helper.itemView.context).load(item.image).into(helper.getView(R.id.image))
     }
 }

@@ -9,6 +9,7 @@ import android.widget.Toast
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.listener.OnItemChildClickListener
 import com.chad.library.adapter.base.listener.OnItemClickListener
+import com.chad.library.adapter.base.listener.SimpleClickListener
 import com.yanjun.app.demo1.Adapter1
 /*
  * @Created by zhaoyanjun
@@ -27,32 +28,47 @@ class Activity1 : AppCompatActivity() {
         mAdapter = Adapter1(getList())
         recycler.adapter = mAdapter
 
-        recycler.addOnItemTouchListener(object : OnItemClickListener() {
-            override fun onSimpleItemClick(
-                adapter: BaseQuickAdapter<*, *>?,
-                view: View?,
-                position: Int
-            ) {
-                Toast.makeText(this@Activity1, "item $position ", Toast.LENGTH_SHORT).show()
+        recycler.addOnItemTouchListener(object : SimpleClickListener() {
+            override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
+                Toast.makeText(
+                    this@Activity1,
+                    "click $position",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
-        })
-
-        recycler.addOnItemTouchListener(object : OnItemChildClickListener() {
-            override fun onSimpleItemChildClick(
-                adapter: BaseQuickAdapter<*, *>?,
+            override fun onItemLongClick(
+                adapter: BaseQuickAdapter<*, *>,
                 view: View,
                 position: Int
             ) {
-                when (view.id) {
-                    R.id.button -> {
-                        Toast.makeText(this@Activity1, "button $position ", Toast.LENGTH_SHORT)
-                            .show()
-                    }
-                }
+                Toast.makeText(
+                    this@Activity1,
+                    "long click $position",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
 
+            override fun onItemChildClick(
+                adapter: BaseQuickAdapter<*, *>,
+                view: View,
+                position: Int
+            ) {
+                Toast.makeText(
+                    this@Activity1,
+                    "button click $position",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
 
+            override fun onItemChildLongClick(
+                adapter: BaseQuickAdapter<*, *>,
+                view: View,
+                position: Int
+            ) {
+                Toast.makeText(this@Activity1, "button long click $position", Toast.LENGTH_SHORT)
+                    .show()
+            }
         })
     }
 

@@ -48,7 +48,7 @@ class Activity5 : AppCompatActivity(), View.OnClickListener {
             override fun onItemClick(adapter: BaseQuickAdapter<*, *>, view: View, position: Int) {
                 Toast.makeText(
                     this@Activity5,
-                    "" + position.toString(),
+                    "click $position",
                     Toast.LENGTH_SHORT
                 ).show()
             }
@@ -60,7 +60,7 @@ class Activity5 : AppCompatActivity(), View.OnClickListener {
             ) {
                 Toast.makeText(
                     this@Activity5,
-                    "" + position.toString(),
+                    "long click $position",
                     Toast.LENGTH_SHORT
                 ).show()
             }
