@@ -22,9 +22,21 @@
 
 <html>
 
-<img width="300" height="450" src="/image/2.png"/>   <img width="300" height="450" src="/image/3.png"/>
-<img width="300" height="450" src="/image/4.png"/>
-<img width="300" height="450" src="/image/5.png"/>
+ <style>
+ 
+ 
+ 
+ </style>
+ 
+ <body>
+ 
+ <img width="300" height="450" src="/image/2.png"/>   <img width="300" height="450" src="/image/3.png"/>
+ <img width="300" height="450" src="/image/4.png"/>
+ <img width="300" height="450" src="/image/5.png"/>
+ 
+ </body>
+
+
 
 </html>
 
