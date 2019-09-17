@@ -20,9 +20,8 @@
 
 ## 项目效果图 
 
-<img width="150" height="150" src="/image/2.png"/>
+<img width="300" height="450" src="/image/2.png"/>
+<img width="300" height="450" src="/image/3.png"/>
+<img width="300" height="450" src="/image/4.png"/>
+<img width="300" height="450" src="/image/5.png"/>
 
-![单一itemType](/image/2.png)
-![多个itemType](/image/3.png)
-![RecyclerView添加头部、尾部](/image/4.png)
-![动画](/image/5.png)
